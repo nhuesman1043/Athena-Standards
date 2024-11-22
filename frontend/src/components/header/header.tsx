@@ -32,7 +32,7 @@ import {
 // ========================
 // Tabler Icons
 // ========================
-import { IconPlaceholder } from "@tabler/icons-react"
+import { IconShieldCheck } from "@tabler/icons-react"
 
 // ========================================
 // HEADER
@@ -63,11 +63,15 @@ export default function Header() {
               rel="noopener noreferrer"
               aria-label="My GitHub"
             >
-              <IconPlaceholder size={45} className="cursor-pointer text-text-primary" />
+              <IconShieldCheck 
+                size={45} 
+                color="var(--brand)"
+                className="cursor-pointer text-text-primary" 
+              />
             </a>
           </Tooltip>
           <Title order={2}>
-            project name here
+            Athena
           </Title>
         </Group>
       </Container>

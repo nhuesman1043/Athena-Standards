@@ -24,8 +24,8 @@ import "@mantine/core/styles.css"
 // ========================================
 
 export const metadata = {
-  title: "Template - Next.js",
-  description: "Template for Next.js",
+  title: "Athena - Standards",
+  description: "Code standards",
 }
 
 // ========================================

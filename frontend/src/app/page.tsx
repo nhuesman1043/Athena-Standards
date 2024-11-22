@@ -88,7 +88,7 @@ export default function Home() {
         </AppShell.Header>
 
         {/* Navbar */}
-        <AppShell.Navbar p="md">
+        <AppShell.Navbar>
           <AppShell.Section grow component={ScrollArea}>
             <Navbar />
           </AppShell.Section>
