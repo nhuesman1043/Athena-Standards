@@ -6,7 +6,7 @@
 // Tabler Icons
 // ========================
 import {
-    IconInfoCircle,
+    IconBulb,
     IconLayout,
     IconGitBranch,
     IconFileText,
@@ -38,12 +38,11 @@ const iconStroke: number = 1.5
 // ========================
 // Data
 // ========================
-export const navbarData = [
+export const sections = [
     {
-        label: "General Standards",
-        href: "#general-standards",
-        icon: <IconInfoCircle size={iconSize} stroke={iconStroke} />,
-        color: "var(--brand)",
+        label: "Introduction",
+        href: "#introduction",
+        icon: <IconBulb  size={iconSize} stroke={iconStroke} />,
         children: [
             { label: "Purpose of Standards", href: "#purpose" },
             { label: "How to Use This Guide", href: "#how-to-use" },

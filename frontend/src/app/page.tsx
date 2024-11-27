@@ -11,9 +11,14 @@
 // ========================
 // Components
 // ========================
-import Header from "@/components/header/header"
-import Navbar from "@/components/navbar/navbar"
-import Content from "@/components/content/content"
+import Header from "@/components/header/"
+import Navbar from "@/components/navbar/"
+import Content from "@/components/content/"
+
+// ========================
+// React
+// ========================
+import { useState } from "react"
 
 // ========================
 // Mantine
@@ -27,9 +32,7 @@ import {
 } from "@mantine/core"
 
 // Hooks
-import { 
-  useDisclosure,
-} from "@mantine/hooks"
+import { useDisclosure } from "@mantine/hooks"
 
 // ========================================
 // HOME
@@ -42,7 +45,8 @@ export default function Home() {
   // Navabr toggle
   const [opened, { toggle }] = useDisclosure()
 
-  // 
+  // Track the active link by href
+  const [activeLink, setActiveLink] = useState<string>("#purpose")
 
   // ========================
   // Render
@@ -50,32 +54,21 @@ export default function Home() {
   return (
     <main>
       <AppShell
-        header={{ height: 60 }}
+        header={{ height: 75 }}
         navbar={{
           width: 300,
           breakpoint: "sm",
           collapsed: { mobile: !opened },
         }}
         padding="md"
-        className="text-text-primary"
-        styles={{
-          header: {
-            backgroundColor: "var(--background-primary)",
-            borderColor: "var(--border-primary)",
-          },
-          navbar: {
-            backgroundColor: "var(--background-primary)",
-            borderColor: "var(--border-primary)",
-          },
-          main: {
-            backgroundColor: "var(--background-primary)",
-            borderColor: "var(--border-primary)",
-          }
-        }}
       >
         {/* Header */}
         <AppShell.Header>
-          <Group h="100%" px="md">
+          <Group 
+            h="100%" 
+            px="md" 
+            w="100%"
+          >
             <Burger
               opened={opened}
               onClick={toggle}
@@ -83,20 +76,22 @@ export default function Home() {
               size="sm"
               aria-label="Toggle navigation menu"
             />
-            <Header />
+            <div className="flex-grow">
+              <Header />
+            </div>
           </Group>
         </AppShell.Header>
 
         {/* Navbar */}
         <AppShell.Navbar>
           <AppShell.Section grow component={ScrollArea}>
-            <Navbar />
+            <Navbar activeLink={activeLink} setActiveLink={setActiveLink} />
           </AppShell.Section>
-        </AppShell.Navbar>
+        </AppShell.Navbar> 
 
         {/* Main */}
         <AppShell.Main>
-          <Content />
+          <Content activeLink={activeLink} />
         </AppShell.Main>
       </AppShell>
     </main>

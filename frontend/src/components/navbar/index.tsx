@@ -9,9 +9,9 @@
 // ========================================
 
 // ========================
-// Section Data
+// Sections
 // ========================
-import { navbarData } from "@/components/navbar/sections/sections"
+import { sections } from "@/components/navbar/sections/"
 
 // ========================
 // React
@@ -31,12 +31,16 @@ import { Container, NavLink } from "@mantine/core"
 // NAVBAR
 // ========================================
 
-export default function Navbar() {
+export default function Navbar({ 
+  activeLink, 
+  setActiveLink,
+}: { 
+  activeLink: string; 
+  setActiveLink: (link: string) => void,
+}) {
   // ========================
   // Operations
   // ========================
-  // Track the active link by href
-  const [activeLink, setActiveLink] = useState<string | null>("#purpose")
 
   // Track the open parents
   const [openParents, setOpenParents] = useState<Set<string>>(() => {
@@ -44,7 +48,7 @@ export default function Navbar() {
     const initialSet = new Set<string>()
 
     // Open the first parent
-    initialSet.add(navbarData[0].href) 
+    initialSet.add(sections[0].href) 
     
     // Return the set
     return initialSet
@@ -81,7 +85,7 @@ export default function Navbar() {
   // Render the navbar dynamically
   const navbar = useMemo(
     () =>
-      navbarData.map((parent) => (
+      sections.map((parent) => (
         <NavLink
           key={parent.href}
           href={parent.href}
@@ -90,7 +94,6 @@ export default function Navbar() {
           childrenOffset={28}
           opened={openParents.has(parent.href)}
           onClick={() => toggleParentOpen(parent.href)}
-          color="var(--brand)"
           aria-expanded={openParents.has(parent.href)}
           active={
             parent.href === activeLink ||
@@ -104,10 +107,7 @@ export default function Navbar() {
               label={child.label}
               active={child.href === activeLink}
               onClick={() => setActiveLink(child.href)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") setActiveLink(child.href)
-              }}
-              color="var(--brand)"
+              onKeyDown={(e) => { if (e.key === "Enter") setActiveLink(child.href) }}
               variant="subtle"
               aria-current={child.href === activeLink ? "page" : undefined}
               tabIndex={0}

@@ -8,11 +8,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        "background-primary": "var(--background-primary)",
-        "border-primary": "var(--border-primary)",
-        "text-primary": "var(--text-primary)"
-      }
+      //
     },
   },
   plugins: [],

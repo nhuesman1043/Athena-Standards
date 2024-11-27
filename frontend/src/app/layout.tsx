@@ -8,13 +8,15 @@
 import "./globals.css"
 
 // ========================
+// Theme
+// ========================
+import { theme } from "../config/theme/"
+
+// ========================
 // Mantine
 // ========================
 // Core
-import { 
-  ColorSchemeScript, 
-  MantineProvider,
-} from "@mantine/core"
+import { MantineProvider, ColorSchemeScript } from "@mantine/core"
 
 // Styles
 import "@mantine/core/styles.css"
@@ -23,30 +25,32 @@ import "@mantine/core/styles.css"
 // METADATA
 // ========================================
 
-export const metadata = {
-  title: "Athena - Standards",
-  description: "Code standards",
-}
+export const metadata = { title: "Athena", description: "Code standards" }
 
 // ========================================
 // ROOT
 // ========================================
 
 export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode,
+}) {
+  // ========================
+  // Operations
+  // ========================
+  //
+
   // ========================
   // Render
   // ========================
-  children,
-}: {
-  children: React.ReactNode
-}) {
   return (
     <html lang="en">
       <head>
-        <ColorSchemeScript />
+        <ColorSchemeScript defaultColorScheme="auto" />
       </head>
       <body>
-        <MantineProvider defaultColorScheme="dark">
+        <MantineProvider theme={theme} defaultColorScheme="auto">
           {children}
         </MantineProvider>
       </body>
